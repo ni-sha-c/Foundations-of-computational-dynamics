@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+\usepackage[tagged, highstructure]{accessibility}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{scribe}
+\usepackage{listings}
+\usepackage{natbib,verbatim}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=magenta,
+    pdftitle={Homework 0},
+    pdfauthor={Nisha Chandramoorthy},
+    pdflang={en-US}
+}
+
+%\Scribe{Your Name}
+\title{Homework 0_31310}
+\LectureNumber{CAAM 31310}
+\LectureDate{Due Oct 2, '24 (11:59 pm ET) on Gradescope} 
+\Lecturer{Cite any sources and collaborators; do not copy. See syllabus for policy.}
+\LectureTitle{Homework 0}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\MakeScribeTop
+
+\section*{Problem 1}
+This problem is about interchanging limits and the problems this can lead to. Source: Rudin Chapter 7.
+\begin{enumerate}
+	\item Prove Theorem 7.13 from Rudin: Suppose $f_n, n \in \mathbb{N}$ is a sequence of continuous functions on a compact set $E.$ Assume that i) $f_n$ converge pointwise to a continuous function $f$ and ii) $f_n(x) \geq f_{n+1}(x)$ for all $x \in E.$ Then, $f_n \to f$ uniformly on $E.$
+ (5 points)
+	\item State in mathematical terms what uniform convergence of a sequence of continuous functions with respect to the supremum norm is. (1 point)
+	\item Consider $f_n = \sin nx$. Does this sequence converge uniformly on a compact subset of $\mathbb{R}$? (1 point) Does it satisfy the assumptions i) and ii) of the Theorem in Part I.1? (1 point)
+	\item  Consider $f_n = \sum_{k=0}^n x^2/(1+x^2)^k$. Does this sequence converge uniformly on $[0,1]?$ (1 point) Does it satisfy the assumptions i) and ii) of the Theorem in Part I.1? (1 point)
+
+\end{enumerate}
+
+\section*{Problem 2}
+Consider independent tosses of unbiased coins, and set random variable 
+$X_i = 1$ when the $i$th coin lands 
+on heads, and $X_i = -1,$ when the $i$th coin lands on tails, with $i = 1,2,3,\cdots.$ Let $Y_i = \sum_{j\leq i} X_j$ and $Z_i = X_{i+1} - X_i.$  
+\begin{itemize}
+	\item[1.] Exactly one out of the three random variables, $A_n := (1/\sqrt{n}) \; Y_n,$ $B_n := (1/\sqrt{n})\; \sum_{i\leq n} Y_i,$ and $C_n := (1/\sqrt{n})\; \sum_{i\leq n} Z_i,$ converges in 
+	distribution to a random variable as $n \to \infty.$  (4 points)
+	\item[2.] Two out of the three sequences $ \{X_i\}, \{Y_i\}, \{Z_i\}$ consist of pairwise uncorrelated random variables (2 points) 
+	\item[3.] There exists a non-constant, converging sequence $c_n$ such that all three of $c_n A_n$, $c_n B_n$ and $c_n C_n$ converge in distribution. (2 points)
+\end{itemize}
+
+
+
+
+
+
+
+\end{document}
