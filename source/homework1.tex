@@ -8,23 +8,24 @@
 \usepackage{listings}
 \usepackage{natbib,verbatim}
 \usepackage{amsmath,amssymb,amsfonts,mathtools}
+\renewcommand{\E}{\mathbb{E}}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
     filecolor=magenta,      
     urlcolor=magenta,
-    pdftitle={Homework 0},
+    pdftitle={Homework 1},
     pdfauthor={Nisha Chandramoorthy},
     pdflang={en-US}
 }
 
 %\Scribe{Your Name}
-\title{Homework 0_31310}
+\title{Homework 1_31310}
 \LectureNumber{CAAM 31310}
-\LectureDate{Due Oct 2, '24 (11:59 pm ET) on Gradescope} 
+\LectureDate{Due Oct 15, '24 (11:59 pm ET) on Gradescope} 
 \Lecturer{Cite any sources and collaborators; do not copy. See syllabus for policy.}
-\LectureTitle{Homework 0}
+\LectureTitle{Homework 1}
 
 \lstset{style=mystyle}
 
@@ -32,32 +33,52 @@
 \MakeScribeTop
 
 \section*{Problem 1}
-This problem is about interchanging limits and the problems this can lead to. Source: Rudin Chapter 7.
+Take $X_i$ to be independent zero-mean random variables with unit variance.
+Usually, the classical central limit theorem (CLT) is proved by showing that the characteristic 
+function of $Y_n := (1/\sqrt{n}) \sum_{i=1}^n X_i$ converges to the \href{}{characteristic function} of a 
+standard normal. 
+Our task in this problem is to use \href{}{Stein's identity} to prove the CLT. Stein's method has been used 
+to derive computational methods for bounding the distance between two random variables and for a class 
+of sampling algorithms, where the task is to generate samples from a partially specified probability density.
+\begin{itemize}
+	\item[(1)] First show that if $W$ is a standard normal RV, for any bounded, differentiable function $f:\mathbb{R} \to \mathbb{{R}},$ with $\E [W f(W)], \E f'(W) \leq \infty,$
+				$\mathcal{A}f (W) := f'(W) -  W f(W)$ has zero mean (1 point). This is known as \emph{Stein's lemma}.
+	\item[(2)] For any function $g \in {\rm Lip}_1(\mathbb{R})$ (differentiable functions with Lipschitz constant = 1), there is a solution $f$ 
+				 to \emph{Stein's equation}: $\mathcal{A} f (x) = g(x) - \E g(W),$ where $W$ is a standard normal. (2 points)
+	\item[(3)] Show that a bounded solution $f$ exists that is twice-differentiable with $\|f''\|_\infty \leq 2$ and $\|f'\|_\infty \leq \sqrt{\pi}/2.$ (2 points)
+	\item[(4)] Let $\E|X_i|^3 \leq \infty.$ Using (2) and (3) above, find a function class $\mathcal{F}$ such that the Wasserstein-1 distance,
+	 $$ W^1(Y_n, W) := \sup_{g \in {\rm Lip}_1(\mathbb{R})} |\E g(W) - \E g(Y)| \leq \sup_{f \in \mathcal{F}} |\E\mathcal{A} f(Y_n)| \leq C \E|X_i^3|/\sqrt{n}. $$ (2 points)
+	\item[(6)] Use (5) and the converse of Stein's lemma to prove the CLT: $Y_n \xrightarrow[]{\rm d} W.$ (2 points) 
+\end{itemize}
+
+\section*{Problem 2}
+This problem asks you to think about an iterative numerical method as a discrete-time dynamical system (map). Consider the power iteration method for a square, non-singular, diagonalizable matrix $A \in \mathbb{R}^{d\times d}.$ For $t \in \mathbb{N},$
+\begin{itemize}
+	\item $v_t \to Av_{t-1}$
+	\item[(*)] $v_{t+1} \to v_{t+1}/\|v_{t+1}\|.$
+\end{itemize}
 \begin{enumerate}
-	\item Prove Theorem 7.13 from Rudin: Suppose $f_n, n \in \mathbb{N}$ is a sequence of continuous functions on a compact set $E.$ Assume that i) $f_n$ converge pointwise to a continuous function $f$ and ii) $f_n(x) \geq f_{n+1}(x)$ for all $x \in E.$ Then, $f_n \to f$ uniformly on $E.$
- (5 points)
-	\item State in mathematical terms what uniform convergence of a sequence of continuous functions with respect to the supremum norm is. (1 point)
-	\item Consider $f_n = \sin nx$. Does this sequence converge uniformly on a compact subset of $\mathbb{R}$? (1 point) Does it satisfy the assumptions i) and ii) of the Theorem in Part I.1? (1 point)
-	\item  Consider $f_n = \sum_{k=0}^n x^2/(1+x^2)^k$. Does this sequence converge uniformly on $[0,1]?$ (1 point) Does it satisfy the assumptions i) and ii) of the Theorem in Part I.1? (1 point)
+	\item Write down a map $F(x_t) = x_{t+1}$ to describe the above algorithm, where $F$ is defined on a set $M \subseteq \mathbb{R}^d$. (1 point)
+	\item Is $M$ compact? (1 point)
+	\item Is $F$ a contraction on $M$? (1 point)
+	\item How many fixed points does $F$ have? (1 point) What are they? (1 point)
+	\item State the assumptions on $A$ so that almost every initial condition converges to a fixed point. (1 point)
+	\item Under the assumptions in the part above, prove the convergence of almost every iterate to a fixed point of $F.$ (3 points)
+	\item From here on, consider the power iteration without the normalization step (*). Write the corresponding new map, $F$, on $\mathbb{R}^d$ (1 point).
+	\item Give conditions on $A$ for $F$ to be a contraction map (1 point).
+	\item Give conditions on $A$ for $F$ to be a linear hyperbolic map (1 point).
+	\item Without the additional conditions in the above two parts (i.e., without hyperbolicity assumptions), describe the asymptotic behavior of all orbits of $F.$ That is, give, with justification, a stable-unstable-center decomposition of $\mathbb{R}^d$ by $F.$ (3 points).
 
 \end{enumerate}
 
-\section*{Problem 2}
-Consider independent tosses of unbiased coins, and set random variable 
-$X_i = 1$ when the $i$th coin lands 
-on heads, and $X_i = -1,$ when the $i$th coin lands on tails, with $i = 1,2,3,\cdots.$ Let $Y_i = \sum_{j\leq i} X_j$ and $Z_i = X_{i+1} - X_i.$  
-Are the following statements true or false, and why?
-\begin{itemize}
-	\item[1.] Exactly one out of the three random variables, $A_n := (1/\sqrt{n}) \; Y_n,$ $B_n := (1/\sqrt{n})\; \sum_{i\leq n} Y_i,$ and $C_n := (1/\sqrt{n})\; \sum_{i\leq n} Z_i,$ converges in 
-	distribution to a random variable as $n \to \infty.$  (4 points)
-	\item[2.] Two out of the three sequences $ \{X_i\}, \{Y_i\}, \{Z_i\}$ consist of pairwise uncorrelated random variables (2 points) 
-	\item[3.] There exists a non-constant, converging sequence $c_n$ such that all three of $c_n A_n$, $c_n B_n$ and $c_n C_n$ converge in distribution. (2 points)
-\end{itemize}
 
-
-
-
-
+%\section*{Problem 3}
+%The dataset you are given consists of $d$-dimensional embeddings of $n$ sentences from (random articles of) simple English Wikipedia.
+%These embeddings, referred to as $ET$, are calculated with the sentence transformer model from \href{https://huggingface.co/mixedbread-ai/mxbai-embed-large-v1}{here}. 
+%Answer the following questions with code. 
+%\begin{itemize}
+%\item[(1)] Consider an alternative way to obtain sentence embeddings. 
+%\end{itemize}
 
 
 \end{document}
