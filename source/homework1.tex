@@ -88,5 +88,18 @@ in your answers for the questions below.
 \item[(3)] As $d$ and $n$ increase, $ESVD$ can produce more identically distributed embeddings. Justify why or not (1 point)  
 \end{itemize}
 
+\textbf{Inputs:} The dataset has $n=10000$ sentences embedded in $d=64$ dimensions. You can choose a smaller subset of sentences, if you wish, but give your value of $n$ and $d$ in your answer.
+You have two files: \verb+wiki-embeddings.ob+ and \verb+wiki-strings.ob+. 
+You can read \verb+wiki-embeddings.ob+ into a list of an 2D array of size $n\times d$ using:
+\begin{verbatim*}
+import pickle
+with open ('wiki-embeddings.ob', 'rb') as fp:
+	wiki-embeddings = pickle.load(fp)
+\end{verbatim*}
+Similarly, you can read \verb+wiki-strings.ob+ into a list of $n$ strings (sentences).\\
+
+\textbf{Choosing $n_c$} The sentences are provided so that you can use any means of extracting the $n_c$ context words. For instance, you could use a package to generate word clouds, as long as you cite it and submit your code snippet.
+The grading will only be based on your explanation of how the choice of context words affects the distribution of the embeddings in 2D, not the choice of context words.
+
 
 \end{document}
