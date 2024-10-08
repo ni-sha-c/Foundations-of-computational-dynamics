@@ -48,7 +48,7 @@ of sampling algorithms, where the task is to generate samples from a partially s
 	\item[(3)] Show that a bounded solution $f$ exists that is twice-differentiable with $\|f''\|_\infty \leq 2$ and $\|f'\|_\infty \leq \sqrt{\pi}/2.$ (2 points)
 	\item[(4)] Let $\E|X_i|^3 \leq \infty.$ Using (2) and (3) above, find a function class $\mathcal{F}$ such that the Wasserstein-1 distance,
 	 $$ W^1(Y_n, W) := \sup_{g \in {\rm Lip}_1(\mathbb{R})} |\E g(W) - \E g(Y)| \leq \sup_{f \in \mathcal{F}} |\E\mathcal{A} f(Y_n)| \leq C \E|X_i^3|/\sqrt{n}. $$ (2 points)
-	\item[(6)] Use (5) and the converse of Stein's lemma to prove the CLT: $Y_n \xrightarrow[]{\rm d} W.$ (2 points) 
+	\item[(5)] Use (4) and the converse of Stein's lemma to prove the CLT: $Y_n \xrightarrow[]{\rm d} W.$ (2 points) 
 \end{itemize}
 
 \section*{Problem 2}
@@ -72,13 +72,21 @@ This problem asks you to think about an iterative numerical method as a discrete
 \end{enumerate}
 
 
-%\section*{Problem 3}
-%The dataset you are given consists of $d$-dimensional embeddings of $n$ sentences from (random articles of) simple English Wikipedia.
-%These embeddings, referred to as $ET$, are calculated with the sentence transformer model from \href{https://huggingface.co/mixedbread-ai/mxbai-embed-large-v1}{here}. 
-%Answer the following questions with code. 
-%\begin{itemize}
-%\item[(1)] Consider an alternative way to obtain sentence embeddings. 
-%\end{itemize}
+\section*{Problem 3}
+The dataset you are given consists of $d$-dimensional embeddings of $n$ sentences from (random articles of) simple English Wikipedia.
+These embeddings, referred to as $ET$, are calculated with the sentence transformer model from \href{https://huggingface.co/mixedbread-ai/mxbai-embed-large-v1}{here}. 
+
+Consider the following alternative way, referred to as $ESVD$, to obtain word embeddings. Construct a matrix, $A$, of size $n \times n_c$ where 
+$n_c$ is the number of some chosen ``context'' words found in the data. An entry $A_{ij}$ is set to 1 if the $i$th sentence contains the $j$th context word. 
+From the best rank $d$ approximation of $A$ (its SVD), find an embedding for each of the $n$ sentences.
+You may choose, say the top $n_c$ words (measured by their overall frequency of occurrence) as your context words. Justify any alternative choice for the context words 
+in your answers for the questions below.
+\begin{itemize}
+\item[(1)] For $d = 2,$ plot a histogram of your sentence embeddings from $ET$ and $ESVD$ (1 point). Explain your observations, and particularly the dependence of the distribution 
+ you see on $n_c$ and on the embedding method (using an SVD or transformers). (3 points)
+\item[(2)] Check numerically if the classical CLT holds for $d=2$. Justify your answer with an appropriate convergence plot, e.g., Wasserstein distance between the scaled sample mean and a Gaussian vs no. of samples. (2 points)
+\item[(3)] As $d$ and $n$ increase, $ESVD$ can produce more identically distributed embeddings. Justify why or not (1 point)  
+\end{itemize}
 
 
 \end{document}
