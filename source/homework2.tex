@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+\usepackage[tagged, highstructure]{accessibility}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{scribe}
+\usepackage{listings}
+\usepackage{natbib,verbatim}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\renewcommand{\E}{\mathbb{E}}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=magenta,
+    pdftitle={Homework 2},
+    pdfauthor={Nisha Chandramoorthy},
+    pdflang={en-US}
+}
+
+%\Scribe{Your Name}
+\title{Homework 2_31310}
+\LectureNumber{CAAM 31310}
+\LectureDate{Due Oct 27, '24 (11:59 pm ET) on Gradescope} 
+\Lecturer{Cite any sources and collaborators; do not copy. See syllabus for policy.}
+\LectureTitle{Homework 2}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\MakeScribeTop
+
+In this homework, we explore perturbations of contraction maps.
+Let $F$ be a contraction map on a complete normed space $M$ with contraction coefficient 
+$\lambda \in (0,1).$
+
+\section*{Part 1 (5 points)}
+(Variation of Proposition 1.1.5 Katok-Hasselblatt) 
+Prove the following statement. For every $\delta > 0,$ there exists an $\epsilon \in (0, 2(1-\lambda))$ such that for any map $G$ with $\|F - G\|_\infty + \|F - G\|_{0,1} < \epsilon,$ where 
+$\|F\|_{0,1} := \sup_{x, y \; \in M, x \neq y} \|F(x) - F(y)\|/\|x - y\|$ is a Lipschitz semi-norm, for any $x \in M,$ the orbits of $F$ and $G$ are $\delta$-close for all time.
+That is, $\|F^n(x) - G^n(x)\| \leq \delta,$ for all $n.$ In particular, 
+$\|x^*_F - x^*_G \|\leq \delta,$ where $x^*_F$ is the fixed point of $F.$ 
+(Hint: first show that $G$ is a contraction)
+
+
+\section*{Part 2 (3 points)}
+Consider a flow $d\varphi^t(x)/dt = v(t, \varphi^t(x))$ in $\mathbb{R}^d.$ Assume that the vector field $(t, x) \to v(t,x) \in \mathbb{R}^d$ is continuous in $t$ and differentiable on 
+ a compact set $M \subset \mathbb{R}^d.$ Prove that, for any starting point, $x_0 \in M,$ the flow $\varphi^t(x_0)$ exists in 
+ $M$ for all time $\mathbb{R}$ (This is the Picard-Lindel\"of theorem).
+
+\section*{Part 3 (2 points)}
+Suppose $(t, x) \to v(t, x)$ is not known exactly and should be estimated from data. Let $v_\theta$ be the vector field that is parameterized by $\theta$ to 
+approximate $v := v_{\theta^*}.$ Use Parts 1 and 2 to give sufficient conditions on $v_{\theta^*}$ and $\theta$ under which the learned and true flows are arbitrarily close (for any $x_0$) for all time. 
+
+\section*{Part 4}
+\begin{enumerate}
+    \item Let $F$ be a contraction map on the space of continuous functions on $\mathbb{R}$ with values in $M$ whose fixed point is the orbit $t\to \varphi^t(x_0)$. Use your definition of $F$ from Part 2.
+        Define a map $G$ by replacing the integral in the definition of $F$ with a quadrature scheme such that $G$ is a contraction. (2 points)
+    \item Solve $\varphi^t(x_0)$ numerically for $v(t, [x_1, x_2, x_3]) = [-k_1 x_1 + k_2 x_2 x_3, k_1 x_1 - k_2 x_2 x_3 - k_3 x_2^2 , k_3 x_2^2]^\top$ with $k_1 = 0.04, k_2 = 10^4, k_3 = 3 \times 10^7.$ (Source: H. Robertson, “The solution of a set of reaction rate equations,” in Numerical
+    Analysis: Introduction (Thompson, 1966), pp. 178–182). Submit your plot of solutions starting from $[1,0,0]^\top$ over time upto $10^5.$ Explain your ODE integrator and give an estimate of the numerical error as a function of time (5 points).
+    \item Is your ODE integrator a contraction map on a space of continuous functions/bounded sequences? (1 point)
+    \item Solve the same equations from 2. now using Picard iteration, wherein you replace time integration with quadrature. Use your $G$ from 1. 
+        Submit the plot and explain your observations. (5 points)
+\end{enumerate}
+
+
+\end{document}
