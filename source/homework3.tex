@@ -1,0 +1,49 @@
+\documentclass[12pt]{article}
+\usepackage[tagged, highstructure]{accessibility}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{scribe}
+\usepackage{listings}
+\usepackage{natbib,verbatim}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\renewcommand{\E}{\mathbb{E}}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=magenta,
+    pdftitle={Homework 2},
+    pdfauthor={Nisha Chandramoorthy},
+    pdflang={en-US}
+}
+
+%\Scribe{Your Name}
+\title{Homework 3_31310}
+\LectureNumber{CAAM 31310}
+\LectureDate{Due Nov 9th, '24 (11:59 pm ET) on Gradescope} 
+\Lecturer{Cite any sources and collaborators; do not copy. See syllabus for policy.}
+\LectureTitle{Homework 3}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\MakeScribeTop
+In this homework, we will study a gradient flow on $\mathbb{T}^2.$ For $w = [x,y,z]\in \mathbb{R}^3,$ define $\ell(w) = x(w)$ to be the first coordinate function. 
+The gradient flow, $F^t,$ of a function $w \to \ell(w)$ is given by $d F^t(w)/dt = -\nabla F(w),$ where $\nabla$ here is the gradient operator induced by the Euclidean metric on $\mathbb{R}^2.$ 
+For concreteness, our torus will be as shown below, with $\max_{w} x(w) = \max_w y(w) = 10 + 1 = 11$ and $\max_w z(w) = 1.$ You can play with the script \verb+torus_gradientflow.py+ for simulation and visualization of the flow.
+\begin{figure}[h!]
+    \includegraphics[width=0.5\textwidth]{torus.png}
+    \caption{A torus embedded in $\mathbb{R}^3.$}
+\end{figure}
+\begin{itemize}
+    \item Give all the fixed points of $F^t.$ (1 point)
+    \item Is $w\to \ell(w)$ geodesically convex on $\mathbb{T}^2$? (1 point) 
+    \item Is $w \to x(w) + 11$ a Lyapunov function? If yes, define an appropriate neighborhood around the fixed points for its definition. (3 points)
+    \item Using the Lyapunov function defined above or otherwise, prove the asymptotic stability of all orbits to the set of fixed points. (3 points)
+    \item Change the embedding of $\mathbb{T}^2,$ by applying a rotation of the $x$-$y$ plane by an $\alpha > 0.$ How must the Lyapunov function be modified? (2 points)
+    \item Write down a sum of squares optimization problem using polynomial functions that recovers the Lyapunov function for any $\alpha.$ You do not need to submit a code, only the formulation. (3 points) 
+\end{itemize}
+\end{document}
