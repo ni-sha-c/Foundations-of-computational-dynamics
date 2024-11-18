@@ -1,0 +1,61 @@
+\documentclass[12pt]{article}
+\usepackage[tagged, highstructure]{accessibility}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{scribe}
+\usepackage{listings}
+\usepackage{natbib,verbatim}
+\usepackage{amsmath,amssymb,amsfonts,mathtools}
+\renewcommand{\E}{\mathbb{E}}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=magenta,
+    pdftitle={Homework 4},
+    pdfauthor={Nisha Chandramoorthy},
+    pdflang={en-US}
+}
+
+%\Scribe{Your Name}
+\title{Homework 4_31310}
+\LectureNumber{CAAM 31310}
+\LectureDate{Due Nov 24th, '24 (11:59 pm ET) on Gradescope} 
+\Lecturer{Cite any sources and collaborators; do not copy. See syllabus for policy.}
+\LectureTitle{Homework 4}
+
+\lstset{style=mystyle}
+
+\begin{document}
+\MakeScribeTop
+In this homework, we will explore Lyapunov analysis and computation of Lyapunov vectors and exponents. We will consider the three-variable Lorenz '63 system, which was introduced as a reduced order model for atmospheric convection. Let $x = [a,b,c]$ be a phase point, and $a(x)$ refers to the first component/coordinate at $x.$ 
+The system is given by the ODEs:
+\begin{equation}
+	\dfrac{d\varphi^t(x)}{dt} = v(\varphi^t(x)) = 
+    \begin{bmatrix}
+	\sigma(b - a) \\
+	a(\rho - c) - b \\
+	ab  - \beta c
+	\end{bmatrix} \circ \varphi^t(x).
+\end{equation}
+Fix $\sigma = 10, \beta = 8/3$ and $\rho = 14$. 
+\begin{enumerate}
+	\item[I] Enumerate all the fixed point attractors and indicate their stability. (2 points) 
+	\item[II] (3 points) Compute the three Lyapunov exponents. Submit a code snippet, explaining each line. Do they depend on the initial condition?
+    \item[III] (3 points) Use the linearized system around a fixed point to define a Lyapunov function (i.e., check that your definition satisfies the properties of a Lyapunov function).
+    \item[IV] (3 points) Write down a sum-of-squares optimization problem (you don't need to solve it) for the region of stability of a fixed point.  
+	\item[III] (5 points) Are the following statements true or false for the Lorenz '63 system? Provide justification.
+		\begin{enumerate}
+			\item The adjoint covariant Lyapounov vector is the same as the covariant Lyapunov vector for the top LE
+			\item The top (backward) Lyapunov vector is always covariant
+			\item There is a zero Lyapunov exponent for the ODE system
+			\item The stable adjoint Lyapunov vector is perpendicular to the unstable Lyapunov vector 
+			\item There is a dense set of points on the attractor that result in different LEs than the ones computed
+		\end{enumerate}
+	\item[IV] (5 points) Compute and plot the top adjoint Lyapunov vector. Submit a code snippet/algorithm.
+
+\end{enumerate} 
+\end{document}
