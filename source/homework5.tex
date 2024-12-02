@@ -69,7 +69,7 @@ Our dynamical system, $\varphi: M \to M,$ will be a non-Markovian map that time-
 That is, $[L,R] \to \varphi([L, R])$ is the numerical solution using the above scheme (defined in \verb+step+) with initial condition $[L, R, v_L, v_R]$, for some fixed $v_L, v_R,$ after one timestep. 
 Note that $\varphi$ is a composition of the time-integrator with nonlinearities, $N_1 \circ N_2$, where $N_1(x) = x \;{\rm mod}\; (m_1 - s_1)$ and $N_2 = x \;{\rm mod}\; (m_2 + s_2),$ applied to the positions 
 $L$ and $R.$ Thus, $M \equiv [m_1-s_1, m_2+s_2]^2.$ Intuitively, when either player far exceeds the average positions of the public, they map back to regions of popular public positions.
-
+As in the code, set $m_1=-1,$ $m_2=1,$ and $s_1 = s_2 = 1.$
 \begin{enumerate}
 	\item[I] When $\sigma =0,$ prove that the vote shares, $S_L$ and $S_R$ are constant along orbits of $\varphi.$
 	 (1 point) 
